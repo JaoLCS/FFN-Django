@@ -1,0 +1,31 @@
+{{extends 'base.html'}}
+
+{% block formulario %}
+<form method="POST">
+    {% csrf_token %}
+    {{noticia_form.as_p}}
+    <button type= "submit">Enviar</button>
+</form>
+{% endblock formulario %}
+<br>
+{%block listagem%}
+<div class="container">
+    <table class="table table-sm">
+
+      {%for noticia in noticiaChaves%}
+          <tr class="result">
+              <td>{{noticia.id}}</td>
+              <td>{{noticia.titulo}}</td>
+              <td>{{noticia.confiabilidade}}</td>
+              <td>{{noticia.not_tem_codigo}}</td>
+              <td>{{noticia.data}}</td>
+              <td class="editar" >
+                <a href="{%url 'update_noticia' noticia.id%}">Editar</a>
+                <a href="{%url 'delete_noticia' noticia.id%}">Excluir</a>
+              </td>
+          </tr>            
+      {%endfor%}
+      
+    </table>
+  </div>
+{%endblock listagem%}

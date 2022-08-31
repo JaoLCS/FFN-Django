@@ -12,7 +12,7 @@ def read_tema(request):
         return redirect("listatemas")
     temas = tema.objects.all()
     pacote = {"temaChaves" : temas, "tema_form": form, }
-    return render(request,  "temas.html", pacote)
+    return render(request,  "lctemas.html", pacote)
 
 def update_tema(request, id_tema):
     temas = tema.objects.get(pk = id_tema)
@@ -22,7 +22,7 @@ def update_tema(request, id_tema):
         form.save()
         return redirect("listatemas")
     pacote = {"tema_form": form}
-    return render(request, "updatetema.html", pacote)
+    return render(request, "editartemas.html", pacote)
 
 def delete_tema(request, id_tema):
     temas = tema.objects.get(pk = id_tema)
@@ -36,7 +36,7 @@ def read_noticia(request):
         return redirect("listanoticias")
     noticias = noticia.objects.all()
     pacote = {"noticiaChaves" : noticias, "noticia_form": form}
-    return render(request,  "noticias.html", pacote)
+    return render(request,  "listanoticias.html", pacote)
 
 def update_noticia(request, id_noticia):
     noticias = noticia.objects.get(pk = id_noticia)
@@ -46,12 +46,10 @@ def update_noticia(request, id_noticia):
         form.save()
         return redirect("listanoticias")
     pacote = {"noticia_form": form}
-    return render(request, "updatenoticia.html", pacote)
+    return render(request, "editar_noticia.html", pacote)
 
 def delete_noticia(request, id_noticia):
     noticias = noticia.objects.get(pk = id_noticia)
     noticias.delete()
     return redirect("listanoticias")
 
-def listar_noticias(request):
-    return render(request,"listanoticias.html")

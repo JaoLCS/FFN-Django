@@ -18,7 +18,7 @@ from django.urls import path
 from crud import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('noticias/', views.listar_noticias, "listanoticias"),
+    #path('noticiasteste/', views.read_noticia_teste, "listanoticiasteste"),
     path('temas/', views.read_tema, name = "listatemas"),
     path('updatetema/<int:id_tema>', views.update_tema, name= "update_tema"),
     path('deletetema/<int:id_tema>', views.delete_tema, name= "delete_tema"),

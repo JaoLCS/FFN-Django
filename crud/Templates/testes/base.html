@@ -113,64 +113,13 @@
 
     </header>
 
-    <div class="container mt-3" id="area-pesquisa"
-      style="color: #66209e; border-bottom: 1px solid #66209e">
+    {%block formulario%}
 
-      {% comment %} <form class="form" action="?" method="POST" id="form-search">
-        <div class="form-group">
+    {%endblock formulario%}
 
-
-          <label for="search">Cadastrar nova notícia:</label>
-          <input 
-          type="text" 
-          name="titulo"
-          class="form-control" 
-          id="pesquisa" 
-          autofocus
-          style="font-family: Libre Franklin;"/>
-
-          Confiabilidade:<input type="number" name="confiabilidade" required class= "form-control" id= "pesquisa" style="font-family: Libre Franklin;"><br>
-          Data:<input type="date" name="data" required><br>
-          Tema:
-          <select name="tema" id="temas" style="text-align: center;">
-                <?php while ($resultado3 = $consulta3 -> fetch_assoc()){ ?>
-                  <option value="<?php echo $resultado3['tem_codigo']?>"><?php echo $resultado3['tem_tema'] ?></option>
-                <?php } ?>
-            </select>
-          
-        </div>
-
-
-      </form> {% endcomment %}
-      <form method="POST">
-        {% csrf_token %}
-        {{noticia_form.as_p}}
-        <button type= "submit">Enviar</button>
-    </form>
-      <br>
-    </div>
-
-
-    <div class="container">
-      <table class="table table-sm">
-
-        {%for noticia in noticiaChaves%}
-            <tr class="result">
-                <td>{{noticia.id}}</td>
-                <td>{{noticia.titulo}}</td>
-                <td>{{noticia.confiabilidade}}</td>
-                <td>{{noticia.not_tem_codigo}}</td>
-                <td>{{noticia.data}}</td>
-                <td class="editar" >
-                  <a href="{%url 'update_noticia' noticia.id%}">Editar</a>
-                  <a href="{%url 'delete_noticia' noticia.id%}">Excluir</a>
-                </td>
-            </tr>            
-        {%endfor%}
-        
-      </table>
-    </div>
-
+    {% block listagem%}
+    
+    {%endblock listagem%}
 
 
     <div class="footer-dark">
