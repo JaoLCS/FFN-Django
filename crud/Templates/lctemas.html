@@ -1,214 +1,24 @@
-<!DOCTYPE html>
-{%load static%}
-<html lang="pt-br">
+{%extends 'base.html'%}
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-
-   
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-   
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
-    />
-
-    <link rel="stylesheet" href= "{%static 'ffn-style.css'%}" />
-    
-    <script src="https://kit.fontawesome.com/12523f43c4.js" crossorigin="anonymous"></script>
-
-    <link rel="icon" href="https://i.imgur.com/RJoR7Ng.png" type="image/x-icon">
-
-    <title>Resultados da Pesquisa</title>
-
-  </head>
-
- 
-  <body id="body-search-result">
-
-    <header class= "sticky-top">
-      <div class="shadow-lg rounded">
-        <div class="container"> 
-          <nav class="navbar navbar-expand-md navbar-dark">
-            
-          <a class="navbar-brand" href="../index.php">
-             
-              <img
-                src="https://i.imgur.com/ZB9JOd9.png"
-                alt="logo"
-                width="125px"
-                class="image-fluid"
-              />
-            </a>
-  
-            <div style="font-family: 'Libre Franklin', sans-serif;" class="navbar-slotext">
-             
-              <span class="navbar-text pb-0" style="color:white; font-weight: 460;"
-                >A melhor plataforma para comparação&nbsp;de notícias!
-              </span>
-              <br>
-              <span class="navbar-text pt-0" id="subslogan"
-                >Tire suas próprias conclusões.
-              </span>
-            </div>          
-  
-  
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#head-div"
-              aria-controls="head-div"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span><i class="fas fa-bars"></i></span>
-            </button>
-  
-
-            <div class="collapse navbar-collapse" id="head-div">
-
-              <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link" href="lcpalavra.php">
-                  Palavras Chave</a>
-                  
-                <a class="nav-item nav-link" href="lcredes.php">
-                  Redes
-                </a>
-
-                <a class="nav-item nav-link" href="lctemas.php">
-                  Tópicos</a>
-                  
-                <a class="nav-item nav-link" href="lcpolarizacao.php">
-                  Polarizações</a>
-                  
-                <a class="nav-item nav-link" href="listanoticias.php">
-                  Noticias</a>
-                  
-                <a class="nav-item nav-link" href="listafontes.php">
-                  Fontes</a>
-
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-
-    </header>
-
-    <div class="container mt-3" id="area-pesquisa"
-      style="color: #66209e; border-bottom: 1px solid #66209e">
-
-      <form method="POST" class= "form">
-        {% csrf_token %}
-        {{tema_form.as_p}}
-        <div class="form-group" style="margin-bottom: 5px;">
-          <button type= "submit" id= "enviar2">Enviar</button>
-        </div>
-    </form>
-      <br>
-    </div>
-
-    <div class="container">
-      <table class="table table-sm">
-      
-        {%for tema in temaChaves%}
-            <tr class="result">
-                <td>{{tema.id}}</td>
-                <td>{{tema.tema}}</td>
-                <td class="editar" >
-                  <a href="{%url 'update_tema' tema.id%}">Editar</a> 
-                  <a href="{%url 'delete_tema' tema.id%}">Excluir</a>
-                </td>
-            </tr>            
-        {%endfor%}
-      </table>
-    </div>
-
-
-
-    <div class="footer-dark">
-      <footer>
-        <div class="container" style="font-family: sans-serif;">
-
-          <div class="row">
-
-            
-            <div class="col-sm-6 col-md-3 item">
-              <h3>Sobre nós</h3>
-              <ul>
-                <li><a href="#">Quem Somos</a></li>
-                <li><a href="#">Central de Ajuda</a></li>
-                <li><a href="#">Como Funciona o FFN</a></li>
-              </ul>
-            </div>
-
-            
-            <div class="col-sm-6 col-md-3 item">
-              <h3>Privacidade</h3>
-              <ul>
-                <li><a href="#">Condições de Uso</a></li>
-                <li><a href="#">Informações Legais</a></li>
-                <li><a href="#">Aviso de Privacidade</a></li>
-              </ul>
-            </div>
-
-            
-            <div class="col-md-6 item text">
-              <h3>FFN - Fighting Fake News</h3>
-              <p>
-                O projeto se propõe a pesquisar, selecionar, filtrar e avaliar
-                notícias e jornais eletrônicos, no intuito de fornecer ao usuário
-                referências úteis para o julgamento individual da veracidade presente nelas.
-              </p>
-            </div>
-
-
-            <div class="col item social">
-              <a href="#"><i class="icon ion-social-facebook"></i></a>
-              <a href="#"><i class="icon ion-social-twitter"></i></a>
-              <a href="#"><i class="icon ion-social-instagram"></i></a>
-            </div>
-
-          </div>
-
-          <p class="copyright">
-            FFN © 2021</p>
-
-        </div>
-      </footer>
-
-    </div>
-
-
-  
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script src= "{%static 'ffn-script.js'%}"></script>
-  </body>
-</html>
+{% block formulario %}
+<form method="POST" class= "form">
+  {% csrf_token %}
+  {{tema_form.as_p}}
+  <div class="form-group" style="margin-bottom: 5px;">
+    <button type= "submit" id= "enviar2">Enviar</button>
+  </div>
+</form>
+{% endblock formulario %}
+<br>
+{%block listagem%}
+{%for tema in temaChaves%}
+<tr class="result">
+    <td>{{tema.id}}</td>
+    <td>{{tema.tema}}</td>
+    <td class="editar" >
+      <a href="{%url 'update_tema' tema.id%}">Editar</a> 
+      <a href="{%url 'delete_tema' tema.id%}">Excluir</a>
+    </td>
+</tr>            
+{%endfor%}
+{%endblock listagem%}

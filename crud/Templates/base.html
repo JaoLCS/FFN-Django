@@ -112,14 +112,22 @@
       </div>
 
     </header>
-
-    {%block formulario%}
-
-    {%endblock formulario%}
-
-    {% block listagem%}
+    <div class="container mt-3" id="area-pesquisa"
+      style="color: #66209e; border-bottom: 1px solid #66209e">
+      {%block formulario%}
     
-    {%endblock listagem%}
+      {%endblock formulario%}
+    </div>
+
+    <div class="container">
+      <table class="table table-sm">
+        {% block listagem%}
+    
+        {%endblock listagem%}
+      </table>
+    </div>
+
+    
 
 
     <div class="footer-dark">

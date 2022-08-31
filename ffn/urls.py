@@ -18,10 +18,11 @@ from django.urls import path
 from crud import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('noticiasteste/', views.read_noticia_teste, "listanoticiasteste"),
+    #temas
     path('temas/', views.read_tema, name = "listatemas"),
     path('updatetema/<int:id_tema>', views.update_tema, name= "update_tema"),
     path('deletetema/<int:id_tema>', views.delete_tema, name= "delete_tema"),
+    #noticias
     path('noticias/', views.read_noticia, name = "listanoticias"),
     path('updatenoticia/<int:id_noticia>', views.update_noticia, name= "update_noticia"),
     path('deletenoticia/<int:id_noticia>', views.delete_noticia, name= "delete_noticia"),

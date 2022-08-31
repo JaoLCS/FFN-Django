@@ -53,3 +53,28 @@ def delete_noticia(request, id_noticia):
     noticias.delete()
     return redirect("listanoticias")
 
+#Testes
+def read_noticia_teste(request):
+    form = NoticiaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect("listanoticias")
+    noticias = noticia.objects.all()
+    pacote = {"noticiaChaves" : noticias, "noticia_form": form}
+    return render(request,  "testenoticia.html", pacote)
+
+def update_noticia_teste(request, id_noticia):
+    noticias = noticia.objects.get(pk = id_noticia)
+    form = NoticiaForm(request.POST or None, instance = noticias)
+
+    if form.is_valid():
+        form.save()
+        return redirect("listanoticias")
+    pacote = {"noticia_form": form}
+    return render(request, "editar_noticia.html", pacote)
+
+def delete_noticia_teste(request, id_noticia):
+    noticias = noticia.objects.get(pk = id_noticia)
+    noticias.delete()
+    return redirect("listanoticias")
+
