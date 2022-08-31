@@ -1,25 +1,3 @@
-<?php 
-include("../config.php");
-if(isset($_POST['tema'])){
-    extract($_POST);
-    if($consulta = $conexao->query("insert into tb_temas (tem_tema) values ('$tema');")) {
-	} else {
-		echo "Erro no cadastro";
-	}
-}
-if(isset($_GET['excluir'])){
-    $codigo = $_GET['excluir'];
-    if($consulta2 = $conexao->query("delete from tb_temas where tem_codigo = $codigo")) {
-        header("Location: lctemas.php");
-    } else {
-        echo "Erro na exclusão";
-        }
-    }
-$consulta = $conexao->query("select * from tb_temas");
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

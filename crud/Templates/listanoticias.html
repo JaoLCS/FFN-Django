@@ -1,26 +1,3 @@
-<?php 
-include("../config.php");
-if(isset($_POST['titulo'])){
-    extract($_POST);
-    if($consulta = $conexao->query("insert into tb_noticias (not_titulo, not_confiabilidade, not_tem_codigo, not_data) values ('$titulo','$confiabilidade','$tema','$data');")) {
-        header("Location: listanoticias.php");
-	} else {
-		echo "Erro no cadastro";
-	}
-}
-$consulta2 = $conexao->query("select * from tb_noticias join tb_temas on not_tem_codigo = tem_codigo");
-if(isset($_GET['excluir'])){
-    $codigo = $_GET['excluir'];
-    if($consulta = $conexao->query("delete from tb_noticias where not_codigo = $codigo")) {
-        header("Location: listanoticias.php");
-	} else {
-		echo "Erro na exclusão";
-	}
-}
-$consulta = $conexao->query("select * from tb_noticias join tb_temas on not_tem_codigo = tem_codigo order by not_codigo");
-$consulta3 = $conexao -> query("select * from tb_temas;");
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

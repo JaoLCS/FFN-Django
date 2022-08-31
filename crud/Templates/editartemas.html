@@ -1,19 +1,3 @@
-<?php 
-include("../config.php");
-$codigo = $_GET['codigo'];
-if(isset($_POST['tema'])){
-    extract($_POST);
-    if($consulta = $conexao->query("update tb_temas set tem_tema = '$tema' where tem_codigo = $codigo;")) {
-      header("Location: lctemas.php");
-  } else {
-		echo "Erro na edição";
-	}
-}
-$consulta2 = $conexao->query("select * from tb_temas where tem_codigo = $codigo");
-$resultado2 = $consulta2->fetch_assoc();
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
