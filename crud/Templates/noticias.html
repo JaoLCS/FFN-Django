@@ -9,25 +9,32 @@
 <body>
     <form method="POST">
         {% csrf_token %}
-        {{tema_form.as_p}}
+        {{noticia_form.as_p}}
         <button type= "submit">Enviar</button>
     </form>
     <br>
     <br>
     <table border="1">
         <tr>
+            <td>Titulo</td>
+            <td>Data</td>
+            <td>Confiabilidade</td>
             <td>Tema</td>
+
         </tr>
-        {% for tema in temaChaves %}
+        {% for noticia in noticiaChaves %}
         <tr>
-            <td>{{tema.tema}}</td>
+            <td>{{noticia.titulo}}</td>
+            <td>{{noticia.data}}</td>
+            <td>{{noticia.confiabilidade}}</td>
+            <td>{{noticia.not_tem_codigo}}</td>
             <td>
-                <a href="{%url 'update_tema' tema.id%}">
+                <a href="{%url 'update_noticia' noticia.id%}">
                   <button>att</button>   
                 </a>
             </td>
             <td>
-                <a href="{%url 'delete_tema' tema.id%}">
+                <a href="{%url 'delete_noticia' noticia.id%}">
                   <button>del</button>   
                 </a>
             </td>
