@@ -11,4 +11,5 @@ class noticia(models.Model):
     titulo = models.CharField(max_length = 150)
     data = models.DateField()
     confiabilidade = models.DecimalField(max_digits=4, decimal_places=1)
-    not_tem_codigo = models.ForeignKey(tema, default= None, on_delete= models.CASCADE)
+    not_tem_codigo = models.ForeignKey(tema, verbose_name='Tema', default= None, on_delete= models.CASCADE)
+    
