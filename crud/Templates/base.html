@@ -86,7 +86,7 @@
             <div class="collapse navbar-collapse" id="head-div">
               
               <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link" href="lcpalavra.php">
+                {% comment %} <a class="nav-item nav-link" href="lcpalavra.php">
                   Palavras Chave</a>
                   
                 <a class="nav-item nav-link" href="lcredes.php">
@@ -97,13 +97,13 @@
                   Tópicos</a>
                   
                 <a class="nav-item nav-link" href="lcpolarizacao.php">
-                  Polarizações</a>
+                  Polarizações</a> {% endcomment %}
                   
-                <a class="nav-item nav-link" href="listanoticias.php">
+                <a class="nav-item nav-link" href="{%url 'listanoticias'%}">
                   Noticias</a>
                   
-                <a class="nav-item nav-link" href="listafontes.php">
-                  Fontes</a>
+                <a class="nav-item nav-link" href="{%url 'listatemas'%}">
+                  Temas</a>
   
               </div>
             </div>
